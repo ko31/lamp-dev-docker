@@ -1,0 +1,39 @@
+version: "3"
+services:
+  php:
+    build: .
+    ports:
+      - "8000:80"
+    volumes:
+      - ./www:/var/www/html
+      - ./config/php/php.ini:/usr/local/etc/php/conf.d/php.ini
+      - ./config/php/ssmtp.conf:/etc/ssmtp/ssmtp.conf
+    working_dir: /var/www/html
+    links:
+      - mariadb
+    container_name: php
+
+  mariadb:
+    image: mariadb:10.4
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: dev
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: dev
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./data/mariadb:/var/lib/mysql
+    container_name: mariadb
+
+  smtp:
+    image: schickling/mailcatcher
+    ports:
+      - "1025:1025"
+      - "1080:1080"
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
