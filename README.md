@@ -47,3 +47,9 @@ Shutdown and cleanup containers.
 ### Adminer
 
 `http://localhost:8080`
+
+## Shell commands
+
+SSH into WordPress container.
+
+`./bin/shell.sh`
