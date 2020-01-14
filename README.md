@@ -50,6 +50,6 @@ Shutdown and cleanup containers.
 
 ## Shell commands
 
-SSH into WordPress container.
+SSH into PHP container.
 
 `./bin/shell.sh`
