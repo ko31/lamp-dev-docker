@@ -53,3 +53,11 @@ Shutdown and cleanup containers.
 SSH into PHP container.
 
 `./bin/shell.sh`
+
+Backup database dump to `backup.sql`.
+
+`./bin/backup_db.sh`
+
+Restore database dump from `backup.sql`.
+
+`./bin/restore_db.sh`
